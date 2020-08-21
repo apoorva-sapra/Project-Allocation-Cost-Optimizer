@@ -1,0 +1,23 @@
+<mat-card>
+    <mat-card-title>Login</mat-card-title>
+<mat-card-content>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <p>
+    <mat-form-field>
+      <input type="text" matInput placeholder="Email" formControlName="username">
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field>
+      <input type="password" matInput placeholder="Password" formControlName="password">
+    </mat-form-field>
+  </p>
+  <p class="buttonContainer">
+    <button type="submit" [disabled]="!form.valid" mat-button>Login</button>
+  </p>
+  <a [routerLink]="['/registration']" routerLinkActive="active-link">
+    New User? Register here
+  </a>
+</form>
+</mat-card-content>
+</mat-card>

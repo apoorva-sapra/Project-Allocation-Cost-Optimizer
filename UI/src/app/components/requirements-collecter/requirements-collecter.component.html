@@ -1,0 +1,32 @@
+<mat-card>
+    <mat-card-title></mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="OnSubmit()">
+            <mat-form-field>
+                <mat-label>Project Site</mat-label>
+                <mat-select formControlName="location">
+                    <mat-option *ngFor="let location of locations" [value]="location">
+                        {{location}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <input type="number" matInput placeholder="Relocation Cost" min="0" formControlName="relocationCost">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="mm/dd/yyyy" formControlName="startDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <!-- <span class="add-btn">
+                <button type="button" mat-raised-button color="primary" aria-label="Example icon button with a delete icon" [disabled]="!shouldEnableAdd" (click)="onAdd()">
+                  <mat-icon>add</mat-icon>
+                </button>
+              </span> -->
+              <app-role-requirement  [role]="role" (roleChange)="onroleChange($event)"></app-role-requirement>
+              <!-- <app-role-requirement *ngFor="let role of roles;index as i;" [role]="role" (roleChange)="onroleChange($event,i)" (onDelete)="deleteRole(i)"></app-role-requirement> -->
+              <button class="submit" type="submit" [disabled]="!form.valid || !isAllRoledFilled()" mat-raised-button color="primary">Get Result</button>
+        </form>
+        
+    </mat-card-content>
+</mat-card>
